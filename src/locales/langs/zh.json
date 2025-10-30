@@ -234,6 +234,10 @@
       "role": "角色管理",
       "userCenter": "个人中心",
       "menu": "菜单管理"
+    },
+    "visit": {
+      "title": "走访管理",
+      "list": "走访记录"
     }
   },
   "table": {

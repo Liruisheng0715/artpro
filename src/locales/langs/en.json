@@ -234,6 +234,10 @@
       "role": "Role Manage",
       "userCenter": "User Center",
       "menu": "Menu Manage"
+    },
+    "visit": {
+      "title": "Visit Management",
+      "list": "Visit Records"
     }
   },
   "table": {
