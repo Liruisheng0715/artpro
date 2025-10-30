@@ -1,6 +1,6 @@
 /**
  * 全局组件配置
- * 用于管理应用中的全局组件，如设置面板、搜索、锁屏等
+ * 用于管理应用中的全局组件，如设置面板、搜索等
  */
 import { defineAsyncComponent } from 'vue'
 
@@ -19,14 +19,6 @@ export const globalComponentsConfig: GlobalComponentConfig[] = [
     key: 'global-search',
     component: defineAsyncComponent(
       () => import('@/components/core/layouts/art-global-search/index.vue')
-    ),
-    enabled: true
-  },
-  {
-    name: '锁屏',
-    key: 'screen-lock',
-    component: defineAsyncComponent(
-      () => import('@/components/core/layouts/art-screen-lock/index.vue')
     ),
     enabled: true
   },
