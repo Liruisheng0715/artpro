@@ -142,10 +142,15 @@
   const userStore = useUserStore()
 
   // 获取用户角色
-  const userRole = computed(() => {
+  const userRoles = computed(() => {
     const userInfo = userStore.getUserInfo
-    return userInfo.roleCode || ''
+    return userInfo.roles || []
   })
+
+  // 检查是否有指定角色
+  const hasRole = (roles: string[]) => {
+    return userRoles.value.some((role) => roles.includes(role))
+  }
 
   // 权限控制
   const hasUpdatePermission = computed(() => {
@@ -155,17 +160,17 @@
 
   const hasDeletePermission = computed(() => {
     // 只有管理员和超级管理员可以删除
-    return ['admin', 'super_admin'].includes(userRole.value)
+    return hasRole(['R_SUPER', 'R_ADMIN'])
   })
 
   const hasImportPermission = computed(() => {
     // 只有管理员和超级管理员可以批量导入
-    return ['admin', 'super_admin'].includes(userRole.value)
+    return hasRole(['R_SUPER', 'R_ADMIN'])
   })
 
   const hasExportPermission = computed(() => {
     // 只有管理员和超级管理员可以批量导出
-    return ['admin', 'super_admin'].includes(userRole.value)
+    return hasRole(['R_SUPER', 'R_ADMIN'])
   })
 
   // 搜索表单
@@ -346,10 +351,11 @@
   const handleExport = async () => {
     try {
       // 获取当前列表数据（根据搜索条件）
-      const dataLimit = userRole.value === 'super_admin' ? Infinity : 500
+      const isSuperAdmin = hasRole(['R_SUPER'])
+      const dataLimit = isSuperAdmin ? Infinity : 500
 
       // 检查数据量
-      if (tableData.total > dataLimit && userRole.value !== 'super_admin') {
+      if (tableData.total > dataLimit && !isSuperAdmin) {
         await ElMessageBox.confirm(
           `当前筛选结果共 ${tableData.total} 条数据，您的权限只能导出前 ${dataLimit} 条，是否继续？`,
           '提示',

@@ -163,16 +163,21 @@
   const importResult = ref<ImportResult | null>(null)
 
   // 获取用户角色
-  const userRole = computed(() => {
+  const userRoles = computed(() => {
     const userInfo = userStore.getUserInfo
-    return userInfo.roleCode || ''
+    return userInfo.roles || []
   })
+
+  // 检查是否有指定角色
+  const hasRole = (roles: string[]) => {
+    return userRoles.value.some((role) => roles.includes(role))
+  }
 
   // 获取数据限制
   const dataLimit = computed(() => {
-    if (userRole.value === 'super_admin') {
-      return Infinity // 无限制
-    } else if (userRole.value === 'admin') {
+    if (hasRole(['R_SUPER'])) {
+      return Infinity // 超级管理员无限制
+    } else if (hasRole(['R_ADMIN'])) {
       return 500 // 管理员限制 500 条
     }
     return 0 // 普通用户不能导入
@@ -180,9 +185,9 @@
 
   // 获取限制文本
   const getLimitText = computed(() => {
-    if (userRole.value === 'super_admin') {
+    if (hasRole(['R_SUPER'])) {
       return t('visit.import.superAdminLimit')
-    } else if (userRole.value === 'admin') {
+    } else if (hasRole(['R_ADMIN'])) {
       return t('visit.import.adminLimit', { count: 500 })
     }
     return t('visit.import.userLimit')
