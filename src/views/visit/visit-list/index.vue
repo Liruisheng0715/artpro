@@ -118,6 +118,9 @@
 
     <!-- 批量导入对话框 -->
     <ImportDialog v-model="importDialogVisible" @import-success="handleImportSuccess" />
+
+    <!-- 批量导出对话框 -->
+    <ExportDialog v-model="exportDialogVisible" @export-success="handleExportSuccess" />
   </div>
 </template>
 
@@ -126,16 +129,10 @@
   import { ElMessage, ElMessageBox } from 'element-plus'
   import { useTable } from '@/utils/table'
   import { useUserStore } from '@/store/modules/user'
-  import {
-    fetchVisitList,
-    fetchDeleteVisit,
-    fetchBatchDeleteVisit,
-    fetchExportVisit
-  } from '@/api/visit'
-  import * as XLSX from 'xlsx'
-  import { saveAs } from 'file-saver'
+  import { fetchVisitList, fetchDeleteVisit, fetchBatchDeleteVisit } from '@/api/visit'
   import VisitDialog from './components/VisitDialog.vue'
   import ImportDialog from './components/ImportDialog.vue'
+  import ExportDialog from './components/ExportDialog.vue'
 
   defineOptions({ name: 'VisitList' })
 
@@ -263,6 +260,9 @@
   // 导入对话框
   const importDialogVisible = ref(false)
 
+  // 导出对话框
+  const exportDialogVisible = ref(false)
+
   // 搜索
   const handleSearch = () => {
     updateParams(searchForm.value)
@@ -349,108 +349,13 @@
   }
 
   // 导出数据
-  const handleExport = async () => {
-    try {
-      // 获取当前列表数据（根据搜索条件）
-      const isSuperAdmin = hasRole(['R_SUPER'])
-      const dataLimit = isSuperAdmin ? Infinity : 500
+  const handleExport = () => {
+    exportDialogVisible.value = true
+  }
 
-      // 检查数据量
-      if (tableData.total > dataLimit && !isSuperAdmin) {
-        await ElMessageBox.confirm(
-          `当前筛选结果共 ${tableData.total} 条数据，您的权限只能导出前 ${dataLimit} 条，是否继续？`,
-          '提示',
-          {
-            confirmButtonText: '继续导出',
-            cancelButtonText: '取消',
-            type: 'warning'
-          }
-        )
-      }
-
-      // 获取要导出的数据
-      const exportParams = {
-        ...searchForm.value,
-        pageNum: 1,
-        pageSize: dataLimit === Infinity ? tableData.total : dataLimit
-      }
-
-      ElMessage.info('正在导出数据，请稍候...')
-
-      const response = await fetchVisitList(exportParams)
-      const exportData = response.list
-
-      if (!exportData || exportData.length === 0) {
-        ElMessage.warning('没有数据可导出')
-        return
-      }
-
-      // 转换数据格式
-      const excelData = exportData.map((item) => ({
-        唯一编号: item.id,
-        运营商: item.operator,
-        员工公司: item.company,
-        商务号码: item.businessNumber,
-        天翼号码: item.tianYiNumber,
-        联系电话: item.contactNumber,
-        套餐类型: item.packageType,
-        费用: item.fee,
-        产品实例: item.productInstance,
-        区: item.district,
-        街道: item.street,
-        社区: item.community,
-        详细地址: item.fullAddress,
-        走访时间: item.visitTime,
-        走访内容: item.visitContent,
-        更新时间: item.updateTime,
-        更新人员: item.updateUser
-      }))
-
-      // 创建工作簿
-      const ws = XLSX.utils.json_to_sheet(excelData)
-      const wb = XLSX.utils.book_new()
-      XLSX.utils.book_append_sheet(wb, ws, '走访记录')
-
-      // 设置列宽
-      const colWidths = [
-        { wch: 25 }, // 唯一编号
-        { wch: 12 }, // 运营商
-        { wch: 20 }, // 员工公司
-        { wch: 15 }, // 商务号码
-        { wch: 15 }, // 天翼号码
-        { wch: 15 }, // 联系电话
-        { wch: 20 }, // 套餐类型
-        { wch: 10 }, // 费用
-        { wch: 20 }, // 产品实例
-        { wch: 12 }, // 区
-        { wch: 15 }, // 街道
-        { wch: 15 }, // 社区
-        { wch: 30 }, // 详细地址
-        { wch: 20 }, // 走访时间
-        { wch: 40 }, // 走访内容
-        { wch: 20 }, // 更新时间
-        { wch: 15 } // 更新人员
-      ]
-      ws['!cols'] = colWidths
-
-      // 生成 Excel 文件
-      const excelBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'array' })
-      const blob = new Blob([excelBuffer], {
-        type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-      })
-
-      // 下载文件
-      const fileName = `走访记录_${new Date().getTime()}.xlsx`
-      saveAs(blob, fileName)
-
-      ElMessage.success(`成功导出 ${exportData.length} 条数据`)
-    } catch (error: any) {
-      // 用户取消导出
-      if (error !== 'cancel') {
-        ElMessage.error('导出失败')
-        console.error('导出错误:', error)
-      }
-    }
+  // 导出成功
+  const handleExportSuccess = () => {
+    // 导出成功后可以选择刷新数据或其他操作
   }
 
   // 选择变化
