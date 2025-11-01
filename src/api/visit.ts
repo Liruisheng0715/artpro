@@ -78,3 +78,15 @@ export function fetchExportVisit(params: Api.Visit.VisitSearchParams) {
     params
   })
 }
+
+/**
+ * 批量导入走访记录
+ * @param params 导入参数
+ */
+export function fetchBatchImportVisit(params: Api.Visit.BatchImportParams) {
+  return request.post<Api.Visit.BatchImportResponse>({
+    url: '/api/visit/batch-import',
+    params,
+    showSuccessMessage: true
+  })
+}

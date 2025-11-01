@@ -90,5 +90,22 @@ declare namespace Api {
     interface UpdateVisitParams extends Partial<CreateVisitParams> {
       id: string
     }
+
+    /** 批量导入参数 */
+    interface BatchImportParams {
+      records: CreateVisitParams[]
+    }
+
+    /** 批量导入响应 */
+    interface BatchImportResponse {
+      /** 总记录数 */
+      total: number
+      /** 成功导入数量 */
+      successCount: number
+      /** 失败数量 */
+      failCount: number
+      /** 错误信息列表 */
+      errors: string[]
+    }
   }
 }
