@@ -232,6 +232,7 @@
     { prop: 'contactNumber', label: '联系号码', width: 140 },
     { prop: 'packageType', label: '套餐类型', width: 150 },
     { prop: 'fee', label: '费用', width: 100, slot: 'fee' },
+    { prop: 'productInstance', label: '产品实例', width: 150 },
     { prop: 'district', label: '区县', width: 120 },
     { prop: 'street', label: '街道', width: 150 },
     { prop: 'community', label: '小区', width: 180 },
@@ -394,6 +395,7 @@
         联系电话: item.contactNumber,
         套餐类型: item.packageType,
         费用: item.fee,
+        产品实例: item.productInstance,
         区: item.district,
         街道: item.street,
         社区: item.community,
@@ -419,6 +421,7 @@
         { wch: 15 }, // 联系电话
         { wch: 20 }, // 套餐类型
         { wch: 10 }, // 费用
+        { wch: 20 }, // 产品实例
         { wch: 12 }, // 区
         { wch: 15 }, // 街道
         { wch: 15 }, // 社区

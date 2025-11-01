@@ -205,6 +205,7 @@
         联系电话: '13900139000',
         套餐类型: '5G畅享套餐',
         费用: 128,
+        产品实例: '智慧家庭套餐实例',
         区: '朝阳区',
         街道: '三里屯街道',
         社区: '三里屯社区',
@@ -228,6 +229,7 @@
       { wch: 15 }, // 联系电话
       { wch: 20 }, // 套餐类型
       { wch: 10 }, // 费用
+      { wch: 20 }, // 产品实例
       { wch: 12 }, // 区
       { wch: 15 }, // 街道
       { wch: 15 }, // 社区
@@ -312,6 +314,7 @@
       '联系电话',
       '套餐类型',
       '费用',
+      '产品实例',
       '区',
       '街道',
       '社区',
@@ -354,6 +357,7 @@
       contactNumber: String(row['联系电话']),
       packageType: String(row['套餐类型']),
       fee: Number(row['费用']),
+      productInstance: String(row['产品实例']),
       district: String(row['区']),
       street: String(row['街道']),
       community: String(row['社区']),

@@ -25,6 +25,8 @@ declare namespace Api {
       packageType: string
       /** 费用 */
       fee: number
+      /** 产品实例 */
+      productInstance: string
       /** 区县 */
       district: string
       /** 街道 */
@@ -78,6 +80,7 @@ declare namespace Api {
       contactNumber: string
       packageType: string
       fee: number
+      productInstance: string
       district: string
       street: string
       community: string
