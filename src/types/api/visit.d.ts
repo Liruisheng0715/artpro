@@ -65,8 +65,20 @@ declare namespace Api {
       company?: string
       /** 业务号码 */
       businessNumber?: string
+      /** 天翼号码 */
+      tianYiNumber?: string
+      /** 联系号码 */
+      contactNumber?: string
+      /** 套餐类型 */
+      packageType?: string
+      /** 产品实例 */
+      productInstance?: string
       /** 区县 */
       district?: string
+      /** 街道 */
+      street?: string
+      /** 小区 */
+      community?: string
       /** 走访时间范围 */
       visitTimeRange?: [string, string]
     }

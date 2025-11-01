@@ -175,7 +175,13 @@
     operator: undefined,
     company: '',
     businessNumber: '',
+    tianYiNumber: '',
+    contactNumber: '',
+    packageType: '',
+    productInstance: '',
     district: '',
+    street: '',
+    community: '',
     visitTimeRange: undefined
   })
 
@@ -206,9 +212,45 @@
     },
     {
       type: 'input',
+      prop: 'tianYiNumber',
+      label: '天翼号码',
+      placeholder: '请输入天翼号码'
+    },
+    {
+      type: 'input',
+      prop: 'contactNumber',
+      label: '联系号码',
+      placeholder: '请输入联系号码'
+    },
+    {
+      type: 'input',
+      prop: 'packageType',
+      label: '套餐类型',
+      placeholder: '请输入套餐类型'
+    },
+    {
+      type: 'input',
+      prop: 'productInstance',
+      label: '产品实例',
+      placeholder: '请输入产品实例'
+    },
+    {
+      type: 'input',
       prop: 'district',
       label: '区县',
       placeholder: '请输入区县'
+    },
+    {
+      type: 'input',
+      prop: 'street',
+      label: '街道',
+      placeholder: '请输入街道'
+    },
+    {
+      type: 'input',
+      prop: 'community',
+      label: '小区',
+      placeholder: '请输入小区'
     },
     {
       type: 'date-range',
@@ -275,7 +317,13 @@
       operator: undefined,
       company: '',
       businessNumber: '',
+      tianYiNumber: '',
+      contactNumber: '',
+      packageType: '',
+      productInstance: '',
       district: '',
+      street: '',
+      community: '',
       visitTimeRange: undefined
     }
     handleSearch()
