@@ -213,10 +213,6 @@
     "outside": {
       "title": "内嵌页面"
     },
-    "dashboard": {
-      "title": "仪表盘",
-      "console": "工作台"
-    },
     "result": {
       "title": "结果页面",
       "success": "成功页",

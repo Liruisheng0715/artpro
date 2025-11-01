@@ -213,10 +213,6 @@
     "outside": {
       "title": "Outside"
     },
-    "dashboard": {
-      "title": "Dashboard",
-      "console": "Console"
-    },
     "result": {
       "title": "Result Page",
       "success": "Success",
