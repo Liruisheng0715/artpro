@@ -230,10 +230,8 @@
     },
     "system": {
       "title": "System Settings",
-      "user": "User Manage",
-      "role": "Role Manage",
-      "userCenter": "User Center",
-      "menu": "Menu Manage"
+      "account": "Account Manage",
+      "userCenter": "User Center"
     }
   },
   "table": {

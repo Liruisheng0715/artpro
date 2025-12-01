@@ -1,25 +1,18 @@
 import request from '@/utils/http'
-import { AppRouteRecord } from '@/types/router'
 
-// 获取用户列表
-export function fetchGetUserList(params: Api.SystemManage.UserSearchParams) {
-  return request.get<Api.SystemManage.UserList>({
-    url: '/api/user/list',
+// 获取账号列表
+export function fetchGetAccountList(params: Api.SystemManage.AccountSearchParams) {
+  return request.get<Api.SystemManage.AccountList>({
+    url: '/api/account/list',
     params
   })
 }
 
-// 获取角色列表
-export function fetchGetRoleList(params: Api.SystemManage.RoleSearchParams) {
-  return request.get<Api.SystemManage.RoleList>({
-    url: '/api/role/list',
-    params
-  })
-}
-
-// 获取菜单列表
-export function fetchGetMenuList() {
-  return request.get<AppRouteRecord[]>({
-    url: '/api/system/menus/simple'
+// 更新账号信息（启用/禁用或修改权限）
+export function fetchUpdateAccount(params: Api.SystemManage.UpdateAccountParams) {
+  return request.put({
+    url: '/api/account/update',
+    params,
+    showSuccessMessage: true
   })
 }
