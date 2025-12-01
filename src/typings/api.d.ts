@@ -72,16 +72,10 @@ declare namespace Api {
       roleId: string
       /** 角色名称 */
       roleName: string
-      /** 角色描述（用来说明是什么等级的角色） */
-      roleDescription: string
       /** 角色代码 */
       roleCode: RoleType
       /** 角色状态（是否启用） */
       enabled: boolean
-      /** 创建时间 */
-      createTime: string
-      /** 更新时间 */
-      updateTime: string
     }
 
     /** 角色搜索参数 */
@@ -93,6 +87,7 @@ declare namespace Api {
     /** 更新角色参数 */
     interface UpdateRoleParams {
       roleId: string
+      roleCode?: RoleType
       enabled?: boolean
     }
   }

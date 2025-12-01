@@ -16,3 +16,12 @@ export function fetchUpdateRoleStatus(params: Api.SystemManage.UpdateRoleParams)
     showSuccessMessage: true
   })
 }
+
+// 更新角色权限
+export function fetchUpdateRolePermission(params: Api.SystemManage.UpdateRoleParams) {
+  return request.put({
+    url: '/api/role/update-permission',
+    params,
+    showSuccessMessage: true
+  })
+}
