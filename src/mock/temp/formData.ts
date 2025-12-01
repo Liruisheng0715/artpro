@@ -19,6 +19,8 @@ export interface User {
   status: string
   create_time: string
   avatar: string
+  roleCode: 'R_SUPER' | 'R_ADMIN' | 'R_USER'
+  roleName: string
 }
 
 // 用户列表
@@ -32,7 +34,9 @@ export const ACCOUNT_TABLE_DATA: User[] = [
     dep: '研发部',
     status: '1',
     create_time: '2020-09-09 10:01:10',
-    avatar: avatar1
+    avatar: avatar1,
+    roleCode: 'R_SUPER',
+    roleName: '超级管理员'
   },
   {
     id: 2,
@@ -43,7 +47,9 @@ export const ACCOUNT_TABLE_DATA: User[] = [
     dep: '电商部',
     status: '1',
     create_time: '2020-10-10 13:01:12',
-    avatar: avatar2
+    avatar: avatar2,
+    roleCode: 'R_ADMIN',
+    roleName: '管理员'
   },
   {
     id: 3,
@@ -54,7 +60,9 @@ export const ACCOUNT_TABLE_DATA: User[] = [
     dep: '人事部',
     status: '1',
     create_time: '2020-11-14 12:01:45',
-    avatar: avatar3
+    avatar: avatar3,
+    roleCode: 'R_ADMIN',
+    roleName: '管理员'
   },
   {
     id: 4,
@@ -65,7 +73,9 @@ export const ACCOUNT_TABLE_DATA: User[] = [
     dep: '产品部',
     status: '1',
     create_time: '2020-11-14 09:01:20',
-    avatar: avatar4
+    avatar: avatar4,
+    roleCode: 'R_ADMIN',
+    roleName: '管理员'
   },
   {
     id: 5,
@@ -76,7 +86,9 @@ export const ACCOUNT_TABLE_DATA: User[] = [
     dep: '财务部',
     status: '1',
     create_time: '2020-11-13 11:01:05',
-    avatar: avatar5
+    avatar: avatar5,
+    roleCode: 'R_ADMIN',
+    roleName: '管理员'
   },
   {
     id: 6,
@@ -87,7 +99,9 @@ export const ACCOUNT_TABLE_DATA: User[] = [
     dep: '运营部',
     status: '1',
     create_time: '2020-10-11 13:10:26',
-    avatar: avatar6
+    avatar: avatar6,
+    roleCode: 'R_USER',
+    roleName: '普通用户'
   },
   {
     id: 7,
@@ -98,7 +112,9 @@ export const ACCOUNT_TABLE_DATA: User[] = [
     dep: '客服部',
     status: '2',
     create_time: '2020-05-14 12:05:10',
-    avatar: avatar7
+    avatar: avatar7,
+    roleCode: 'R_USER',
+    roleName: '普通用户'
   },
   {
     id: 8,
@@ -109,7 +125,9 @@ export const ACCOUNT_TABLE_DATA: User[] = [
     dep: '总经办',
     status: '3',
     create_time: '2020-11-12 07:22:25',
-    avatar: avatar8
+    avatar: avatar8,
+    roleCode: 'R_USER',
+    roleName: '普通用户'
   },
   {
     id: 9,
@@ -120,7 +138,9 @@ export const ACCOUNT_TABLE_DATA: User[] = [
     dep: '研发部',
     status: '4',
     create_time: '2020-06-12 05:04:20',
-    avatar: avatar9
+    avatar: avatar9,
+    roleCode: 'R_USER',
+    roleName: '普通用户'
   },
   {
     id: 10,
@@ -131,7 +151,9 @@ export const ACCOUNT_TABLE_DATA: User[] = [
     dep: '研发部',
     status: '1',
     create_time: '2020-11-12 16:01:10',
-    avatar: avatar10
+    avatar: avatar10,
+    roleCode: 'R_USER',
+    roleName: '普通用户'
   },
   {
     id: 11,
@@ -142,7 +164,9 @@ export const ACCOUNT_TABLE_DATA: User[] = [
     dep: '研发部',
     status: '1',
     create_time: '2020-11-14 12:01:20',
-    avatar: avatar6
+    avatar: avatar6,
+    roleCode: 'R_USER',
+    roleName: '普通用户'
   },
   {
     id: 12,
@@ -153,7 +177,9 @@ export const ACCOUNT_TABLE_DATA: User[] = [
     dep: '研发部',
     status: '1',
     create_time: '2020-11-14 12:01:20',
-    avatar: avatar7
+    avatar: avatar7,
+    roleCode: 'R_USER',
+    roleName: '普通用户'
   },
   {
     id: 13,
@@ -164,7 +190,9 @@ export const ACCOUNT_TABLE_DATA: User[] = [
     dep: '研发部',
     status: '1',
     create_time: '2020-11-14 12:01:20',
-    avatar: avatar8
+    avatar: avatar8,
+    roleCode: 'R_USER',
+    roleName: '普通用户'
   },
   {
     id: 14,
@@ -175,7 +203,9 @@ export const ACCOUNT_TABLE_DATA: User[] = [
     dep: '研发部',
     status: '1',
     create_time: '2020-11-14 12:01:20',
-    avatar: avatar9
+    avatar: avatar9,
+    roleCode: 'R_USER',
+    roleName: '普通用户'
   },
   {
     id: 15,
@@ -186,7 +216,9 @@ export const ACCOUNT_TABLE_DATA: User[] = [
     dep: '研发部',
     status: '1',
     create_time: '2020-11-14 12:01:20',
-    avatar: avatar10
+    avatar: avatar10,
+    roleCode: 'R_USER',
+    roleName: '普通用户'
   }
 ]
 
@@ -219,55 +251,6 @@ export const ROLE_LIST_DATA: Role[] = [
     roleCode: 'R_USER',
     des: '拥有系统普通权限',
     date: '2025-05-15 12:30:45',
-    enable: true
-  },
-  {
-    roleName: '财务管理员',
-    roleCode: 'R_FINANCE',
-    des: '管理财务相关权限',
-    date: '2025-05-16 09:15:30',
-    enable: true
-  },
-  {
-    roleName: '数据分析师',
-    roleCode: 'R_ANALYST',
-    des: '拥有数据分析权限',
-    date: '2025-05-16 11:45:00',
-    enable: false
-  },
-  {
-    roleName: '客服专员',
-    roleCode: 'R_SUPPORT',
-    des: '处理客户支持请求',
-    date: '2025-05-17 14:30:22',
-    enable: true
-  },
-  {
-    roleName: '营销经理',
-    roleCode: 'R_MARKETING',
-    des: '管理营销活动权限',
-    date: '2025-05-17 15:10:50',
-    enable: true
-  },
-  {
-    roleName: '访客用户',
-    roleCode: 'R_GUEST',
-    des: '仅限浏览权限',
-    date: '2025-05-18 08:25:40',
-    enable: false
-  },
-  {
-    roleName: '系统维护员',
-    roleCode: 'R_MAINTAINER',
-    des: '负责系统维护和更新',
-    date: '2025-05-18 09:50:12',
-    enable: true
-  },
-  {
-    roleName: '项目经理',
-    roleCode: 'R_PM',
-    des: '管理项目相关权限',
-    date: '2025-05-19 13:40:35',
     enable: true
   }
 ]

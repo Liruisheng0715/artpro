@@ -90,5 +90,48 @@ declare namespace Api {
       roleCode?: RoleType
       enabled?: boolean
     }
+
+    /** 用户列表 */
+    type UserList = Api.Common.PaginatedResponse<UserListItem>
+
+    /** 用户列表项 */
+    interface UserListItem {
+      /** 用户ID */
+      id: number
+      /** 用户名 */
+      username: string
+      /** 性别 (1:男, 0:女) */
+      gender: 1 | 0
+      /** 手机号 */
+      mobile: string
+      /** 邮箱 */
+      email: string
+      /** 部门 */
+      dep: string
+      /** 状态 */
+      status: string
+      /** 创建时间 */
+      create_time: string
+      /** 头像 */
+      avatar: string
+      /** 角色代码 */
+      roleCode: RoleType
+      /** 角色名称 */
+      roleName: string
+    }
+
+    /** 用户搜索参数 */
+    type UserSearchParams = Partial<
+      Pick<UserListItem, 'id' | 'username' | 'roleCode' | 'status'> &
+        Api.Common.CommonSearchParams
+    >
+
+    /** 更新用户角色参数 */
+    interface UpdateUserRoleParams {
+      /** 用户ID */
+      id: number
+      /** 新角色代码 */
+      roleCode: RoleType
+    }
   }
 }

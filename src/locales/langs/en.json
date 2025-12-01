@@ -226,6 +226,7 @@
     },
     "system": {
       "title": "System Settings",
+      "user": "User Manage",
       "role": "Role Manage",
       "userCenter": "User Center"
     },

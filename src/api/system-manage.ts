@@ -25,3 +25,20 @@ export function fetchUpdateRolePermission(params: Api.SystemManage.UpdateRolePar
     showSuccessMessage: true
   })
 }
+
+// 获取用户列表
+export function fetchGetUserList(params: Api.SystemManage.UserSearchParams) {
+  return request.get<Api.SystemManage.UserList>({
+    url: '/api/user/list',
+    params
+  })
+}
+
+// 更新用户角色
+export function fetchUpdateUserRole(params: Api.SystemManage.UpdateUserRoleParams) {
+  return request.put({
+    url: '/api/user/update-role',
+    params,
+    showSuccessMessage: true
+  })
+}
