@@ -22,7 +22,6 @@
       "userCenter": "个人中心",
       "docs": "使用文档",
       "github": "Github",
-      "lockScreen": "锁定屏幕",
       "logout": "退出登录"
     },
     "guide": {
@@ -176,18 +175,6 @@
     "hasAccount": "已有账号？",
     "toLogin": "去登录"
   },
-  "lockScreen": {
-    "pwdError": "密码错误",
-    "lock": {
-      "inputPlaceholder": "请输入锁屏密码",
-      "btnText": "锁定"
-    },
-    "unlock": {
-      "inputPlaceholder": "请输入解锁密码",
-      "btnText": "解锁",
-      "backBtnText": "返回登录"
-    }
-  },
   "greeting": {
     "dawn": "凌晨了！",
     "morning": "上午好！",
@@ -226,10 +213,8 @@
     },
     "system": {
       "title": "系统管理",
-      "user": "用户管理",
-      "role": "角色管理",
-      "userCenter": "个人中心",
-      "menu": "菜单管理"
+      "account": "账号管理",
+      "userCenter": "个人中心"
     },
     "visit": {
       "title": "走访管理",
