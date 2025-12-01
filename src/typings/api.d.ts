@@ -60,49 +60,40 @@ declare namespace Api {
 
   /** 系统管理类型 */
   namespace SystemManage {
-    /** 用户列表 */
-    type UserList = Api.Common.PaginatedResponse<UserListItem>
-
-    /** 用户列表项 */
-    interface UserListItem {
-      id: number
-      avatar: string
-      status: string
-      userName: string
-      userGender: string
-      nickName: string
-      userPhone: string
-      userEmail: string
-      userRoles: string[]
-      createBy: string
-      createTime: string
-      updateBy: string
-      updateTime: string
-    }
-
-    /** 用户搜索参数 */
-    type UserSearchParams = Partial<
-      Pick<UserListItem, 'id' | 'userName' | 'userGender' | 'userPhone' | 'userEmail' | 'status'> &
-        Api.Common.CommonSearchParams
-    >
+    /** 角色类型枚举 */
+    type RoleType = 'R_SUPER' | 'R_ADMIN' | 'R_USER'
 
     /** 角色列表 */
     type RoleList = Api.Common.PaginatedResponse<RoleListItem>
 
     /** 角色列表项 */
     interface RoleListItem {
-      roleId: number
+      /** 角色ID */
+      roleId: string
+      /** 角色名称 */
       roleName: string
-      roleCode: string
-      description: string
+      /** 角色描述（用来说明是什么等级的角色） */
+      roleDescription: string
+      /** 角色代码 */
+      roleCode: RoleType
+      /** 角色状态（是否启用） */
       enabled: boolean
+      /** 创建时间 */
       createTime: string
+      /** 更新时间 */
+      updateTime: string
     }
 
     /** 角色搜索参数 */
     type RoleSearchParams = Partial<
-      Pick<RoleListItem, 'roleId' | 'roleName' | 'roleCode' | 'description' | 'enabled'> &
+      Pick<RoleListItem, 'roleId' | 'roleName' | 'roleCode' | 'enabled'> &
         Api.Common.CommonSearchParams
     >
+
+    /** 更新角色参数 */
+    interface UpdateRoleParams {
+      roleId: string
+      enabled?: boolean
+    }
   }
 }

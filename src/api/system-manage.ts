@@ -1,13 +1,4 @@
 import request from '@/utils/http'
-import { AppRouteRecord } from '@/types/router'
-
-// 获取用户列表
-export function fetchGetUserList(params: Api.SystemManage.UserSearchParams) {
-  return request.get<Api.SystemManage.UserList>({
-    url: '/api/user/list',
-    params
-  })
-}
 
 // 获取角色列表
 export function fetchGetRoleList(params: Api.SystemManage.RoleSearchParams) {
@@ -17,9 +8,11 @@ export function fetchGetRoleList(params: Api.SystemManage.RoleSearchParams) {
   })
 }
 
-// 获取菜单列表
-export function fetchGetMenuList() {
-  return request.get<AppRouteRecord[]>({
-    url: '/api/system/menus/simple'
+// 更新角色状态（启用/禁用）
+export function fetchUpdateRoleStatus(params: Api.SystemManage.UpdateRoleParams) {
+  return request.put({
+    url: '/api/role/update-status',
+    params,
+    showSuccessMessage: true
   })
 }

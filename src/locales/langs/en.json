@@ -226,10 +226,8 @@
     },
     "system": {
       "title": "System Settings",
-      "user": "User Manage",
       "role": "Role Manage",
-      "userCenter": "User Center",
-      "menu": "Menu Manage"
+      "userCenter": "User Center"
     },
     "visit": {
       "title": "Visit Management",
