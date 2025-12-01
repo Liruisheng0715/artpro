@@ -6,7 +6,6 @@ import { useUserStore } from '@/store/modules/user'
 import { useMenuStore } from '@/store/modules/menu'
 import { setWorktab } from '@/utils/navigation'
 import { setPageTitle } from '../utils/utils'
-import { fetchGetMenuList } from '@/api/system-manage'
 import { registerDynamicRoutes } from '../utils/registerRoutes'
 import { AppRouteRecord } from '@/types/router'
 import { RoutesAlias } from '../routesAlias'
@@ -207,11 +206,8 @@ async function handleDynamicRoutes(
  * 获取菜单数据
  */
 async function getMenuData(router: Router): Promise<void> {
-  if (useCommon().isFrontendMode.value) {
-    await processFrontendMenu(router)
-  } else {
-    await processBackendMenu(router)
-  }
+  // 使用前端路由模式（已删除后端菜单管理）
+  await processFrontendMenu(router)
 }
 
 /**
@@ -229,15 +225,6 @@ async function processFrontendMenu(router: Router): Promise<void> {
   const filteredMenuList = filterMenuByRoles(menuList, roles)
 
   await registerAndStoreMenu(router, filteredMenuList)
-}
-
-/**
- * 处理后端控制模式的菜单逻辑
- */
-async function processBackendMenu(router: Router): Promise<void> {
-  const list = await fetchGetMenuList()
-  const menuList = list.map((route) => menuDataToRouter(route))
-  await registerAndStoreMenu(router, menuList)
 }
 
 /**
