@@ -60,49 +60,39 @@ declare namespace Api {
 
   /** 系统管理类型 */
   namespace SystemManage {
-    /** 用户列表 */
-    type UserList = Api.Common.PaginatedResponse<UserListItem>
+    /** 账号类别 */
+    type AccountRole = 'R_SUPER' | 'R_ADMIN' | 'R_USER'
 
-    /** 用户列表项 */
-    interface UserListItem {
-      id: number
-      avatar: string
-      status: string
-      userName: string
-      userGender: string
-      nickName: string
-      userPhone: string
-      userEmail: string
-      userRoles: string[]
-      createBy: string
+    /** 账号列表 */
+    type AccountList = Api.Common.PaginatedResponse<AccountListItem>
+
+    /** 账号列表项 */
+    interface AccountListItem {
+      /** 账号ID */
+      accountId: string
+      /** 所属员工姓名 */
+      employeeName: string
+      /** 账号类别 */
+      role: AccountRole
+      /** 账号状态 */
+      enabled: boolean
+      /** 创建时间 */
       createTime: string
-      updateBy: string
+      /** 更新时间 */
       updateTime: string
     }
 
-    /** 用户搜索参数 */
-    type UserSearchParams = Partial<
-      Pick<UserListItem, 'id' | 'userName' | 'userGender' | 'userPhone' | 'userEmail' | 'status'> &
+    /** 账号搜索参数 */
+    type AccountSearchParams = Partial<
+      Pick<AccountListItem, 'accountId' | 'employeeName' | 'role' | 'enabled'> &
         Api.Common.CommonSearchParams
     >
 
-    /** 角色列表 */
-    type RoleList = Api.Common.PaginatedResponse<RoleListItem>
-
-    /** 角色列表项 */
-    interface RoleListItem {
-      roleId: number
-      roleName: string
-      roleCode: string
-      description: string
-      enabled: boolean
-      createTime: string
+    /** 更新账号参数 */
+    interface UpdateAccountParams {
+      accountId: string
+      role?: AccountRole
+      enabled?: boolean
     }
-
-    /** 角色搜索参数 */
-    type RoleSearchParams = Partial<
-      Pick<RoleListItem, 'roleId' | 'roleName' | 'roleCode' | 'description' | 'enabled'> &
-        Api.Common.CommonSearchParams
-    >
   }
 }

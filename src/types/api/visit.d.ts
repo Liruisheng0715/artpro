@@ -25,6 +25,8 @@ declare namespace Api {
       packageType: string
       /** 费用 */
       fee: number
+      /** 产品实例 */
+      productInstance: string
       /** 区县 */
       district: string
       /** 街道 */
@@ -63,8 +65,20 @@ declare namespace Api {
       company?: string
       /** 业务号码 */
       businessNumber?: string
+      /** 天翼号码 */
+      tianYiNumber?: string
+      /** 联系号码 */
+      contactNumber?: string
+      /** 套餐类型 */
+      packageType?: string
+      /** 产品实例 */
+      productInstance?: string
       /** 区县 */
       district?: string
+      /** 街道 */
+      street?: string
+      /** 小区 */
+      community?: string
       /** 走访时间范围 */
       visitTimeRange?: [string, string]
     }
@@ -78,6 +92,7 @@ declare namespace Api {
       contactNumber: string
       packageType: string
       fee: number
+      productInstance: string
       district: string
       street: string
       community: string
@@ -89,6 +104,23 @@ declare namespace Api {
     /** 更新走访记录参数 */
     interface UpdateVisitParams extends Partial<CreateVisitParams> {
       id: string
+    }
+
+    /** 批量导入参数 */
+    interface BatchImportParams {
+      records: CreateVisitParams[]
+    }
+
+    /** 批量导入响应 */
+    interface BatchImportResponse {
+      /** 总记录数 */
+      total: number
+      /** 成功导入数量 */
+      successCount: number
+      /** 失败数量 */
+      failCount: number
+      /** 错误信息列表 */
+      errors: string[]
     }
   }
 }

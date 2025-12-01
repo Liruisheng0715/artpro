@@ -200,10 +200,6 @@
     "outside": {
       "title": "内嵌页面"
     },
-    "dashboard": {
-      "title": "仪表盘",
-      "console": "工作台"
-    },
     "result": {
       "title": "结果页面",
       "success": "成功页",
@@ -217,14 +213,53 @@
     },
     "system": {
       "title": "系统管理",
-      "user": "用户管理",
-      "role": "角色管理",
-      "userCenter": "个人中心",
-      "menu": "菜单管理"
+      "account": "账号管理",
+      "userCenter": "个人中心"
     },
     "visit": {
       "title": "走访管理",
-      "list": "走访记录"
+      "list": "走访记录",
+      "import": {
+        "title": "批量导入走访记录",
+        "notice": "导入说明",
+        "superAdminLimit": "超级管理员：无限制导入",
+        "adminLimit": "管理员：单次最多导入 {count} 条数据",
+        "userLimit": "普通用户：无权限批量导入",
+        "fileFormat": "请确保文件格式为 .xlsx 或 .xls",
+        "downloadTemplate": "下载导入模板",
+        "dragTip": "将文件拖到此处，或",
+        "clickTip": "点击上传",
+        "fileTip": "只能上传 .xlsx / .xls 文件",
+        "fileLimit": "只能上传一个文件",
+        "selectFile": "请选择要导入的文件",
+        "noPermission": "您没有批量导入权限",
+        "invalidFile": "无效的文件",
+        "parsing": "正在解析文件...",
+        "validating": "正在验证数据...",
+        "transforming": "正在转换数据...",
+        "uploading": "正在上传数据...",
+        "completed": "导入完成",
+        "failed": "导入失败",
+        "importing": "导入中...",
+        "startImport": "开始导入",
+        "closeConfirm": "导入正在进行中，确定要关闭吗？",
+        "result": "导入结果",
+        "totalRecords": "总记录数",
+        "successRecords": "成功导入",
+        "failRecords": "失败记录",
+        "errorDetails": "错误详情",
+        "moreErrors": "还有 {count} 个错误未显示",
+        "emptyFile": "文件中没有数据",
+        "exceedLimit": "数据量超过限制，最多 {limit} 条，实际 {count} 条",
+        "missingField": "第 {row} 行缺少必填字段：{field}",
+        "invalidOperator": "第 {row} 行运营商值无效",
+        "invalidFee": "第 {row} 行费用必须为数字",
+        "validationFailed": "数据验证失败",
+        "importSuccess": "成功导入 {count} 条数据",
+        "importFailed": "导入失败",
+        "unknownError": "未知错误",
+        "templateDownloaded": "模板下载成功"
+      }
     }
   },
   "table": {

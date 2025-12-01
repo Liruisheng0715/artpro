@@ -82,6 +82,13 @@
           </ElFormItem>
         </ElCol>
 
+        <!-- 产品实例 -->
+        <ElCol :span="12">
+          <ElFormItem label="产品实例" prop="productInstance">
+            <ElInput v-model="formData.productInstance" placeholder="请输入产品实例" />
+          </ElFormItem>
+        </ElCol>
+
         <!-- 走访时间 -->
         <ElCol :span="12">
           <ElFormItem label="走访时间" prop="visitTime">
@@ -206,6 +213,7 @@
     contactNumber: '',
     packageType: '',
     fee: 0,
+    productInstance: '',
     district: '',
     street: '',
     community: '',
@@ -232,6 +240,7 @@
     ],
     packageType: [{ required: true, message: '请输入套餐类型', trigger: 'blur' }],
     fee: [{ required: true, message: '请输入费用', trigger: 'blur' }],
+    productInstance: [{ required: true, message: '请输入产品实例', trigger: 'blur' }],
     district: [{ required: true, message: '请输入区县', trigger: 'blur' }],
     street: [{ required: true, message: '请输入街道', trigger: 'blur' }],
     community: [{ required: true, message: '请输入小区', trigger: 'blur' }],
